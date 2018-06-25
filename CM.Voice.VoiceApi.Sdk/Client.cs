@@ -6,6 +6,7 @@ namespace CM.Voice.VoiceApi.Sdk
     {
         public void SendNotification()
         {
+            fail build
             throw new NotImplementedException();
         }
     }
