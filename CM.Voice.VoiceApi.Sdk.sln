@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.Voice.VoiceApi.Sdk", "CM.Voice.VoiceApi.Sdk\CM.Voice.VoiceApi.Sdk.csproj", "{D1F99D27-4EAE-43A6-B3F1-AE11AB2C9E8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3C2AB88D-A8D8-4F44-B1BE-7AD8D82E49ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D1F99D27-4EAE-43A6-B3F1-AE11AB2C9E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F99D27-4EAE-43A6-B3F1-AE11AB2C9E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1F99D27-4EAE-43A6-B3F1-AE11AB2C9E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2AB88D-A8D8-4F44-B1BE-7AD8D82E49ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2AB88D-A8D8-4F44-B1BE-7AD8D82E49ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2AB88D-A8D8-4F44-B1BE-7AD8D82E49ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2AB88D-A8D8-4F44-B1BE-7AD8D82E49ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
