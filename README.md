@@ -1,7 +1,7 @@
-| branch | build status |
-| --- | --- |
-| master | [![build](https://ci.appveyor.com/api/projects/status/j3s39605fppcmgbn/branch/master?svg=true "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master) |
-| develop | [![build](https://ci.appveyor.com/api/projects/status/j3s39605fppcmgbn/branch/develop?svg=true "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/develop) |
+| branch | build status | test status |
+| --- | --- | --- |
+| master | [![build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master) | [![test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master)
+| develop | [![build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/develop.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/develop) | [![test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/develop.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/develop)
 
 # VoiceApiSdk
 SDK for use with the CM VoiceAPI
