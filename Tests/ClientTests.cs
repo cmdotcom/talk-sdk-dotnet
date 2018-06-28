@@ -1,5 +1,6 @@
 using CM.Voice.VoiceApi.Sdk;
 using CM.Voice.VoiceApi.Sdk.Models;
+using CM.Voice.VoiceApi.Sdk.Models.Events;
 using CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps;
 using Newtonsoft.Json;
 using System;
@@ -26,8 +27,12 @@ namespace Tests
             {
                 RequestMessages.Add((request, request.Content.ReadAsStringAsync().Result));
 
-                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
+                //return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
+                return ReturnFunction();
             }
+
+            public delegate Task<HttpResponseMessage> ReturnFunc();
+            public ReturnFunc ReturnFunction { get; set; } = () => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
         }
 
         [Fact]
@@ -144,5 +149,49 @@ namespace Tests
             var json = JsonConvert.SerializeObject(instruction);
             Assert.Equal(json, request.Content);
         }
+
+        [Fact]
+        public void TestCallQueuedEvent()
+        {
+            var instruction = new NotificationInstruction
+            {
+                InstructionId = Guid.NewGuid().ToString(),
+                Caller = "+1234567890",
+                Callee = "+9876543210",
+                PromptType = PromptType.TTS,
+                Prompt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu laoreet augue. Fusce fermentum auctor pellentesque.",
+                Anonymous = false,
+                DisableCalleesValidation = false,
+                CallbackUrl = "http://www.random.org",
+                Voice = new Voice()
+            };
+
+            var evt = new CallQueuedEvent
+            {
+                Caller = instruction.Caller,
+                Callee = instruction.Callee,
+                Success = true,
+                InstructionId = instruction.InstructionId,
+                CallId = Guid.NewGuid(),
+                Error = string.Empty
+            };
+
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            var evtJson = JsonConvert.SerializeObject(evt);
+            responseMessage.Content = new StringContent(evtJson);
+            var handler = new FakeHttpMessageHandler
+            {
+                ReturnFunction = () => Task.FromResult(responseMessage)
+            };
+            var httpClient = new HttpClient(handler);
+            var client = new VoiceApiClient(httpClient, Guid.NewGuid());
+
+            var result = client.SendInstruction(instruction).Result;
+
+            Assert.Equal(HttpStatusCode.OK, result.HttpStatusCode);
+            Assert.Equal(evtJson, result.Content);
+            Assert.Equal(evt, result.DeserializeEvent());
+        }
+
     }
 }
