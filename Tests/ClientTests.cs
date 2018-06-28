@@ -197,6 +197,5 @@ namespace Tests
             Assert.Equal(evtJson, result.Content);
             Assert.Equal(evt, result.DeserializeEvent());
         }
-
     }
 }

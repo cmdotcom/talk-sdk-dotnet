@@ -1,12 +1,43 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
     /// <summary>
     /// Base class for all the initiate outbound call instructions.
     /// </summary>
-    public abstract class BaseAppInstruction
+    public abstract class BaseAppInstruction : IEquatable<BaseAppInstruction>
     {
+        public bool Equals(BaseAppInstruction other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(InstructionId, other.InstructionId) && string.Equals(Callee, other.Callee) && Equals(Callees, other.Callees) && string.Equals(Caller, other.Caller) && Anonymous == other.Anonymous && DisableCalleesValidation == other.DisableCalleesValidation && string.Equals(CallbackUrl, other.CallbackUrl);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((BaseAppInstruction) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (InstructionId != null ? InstructionId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Callee != null ? Callee.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Callees != null ? Callees.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Caller != null ? Caller.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Anonymous.GetHashCode();
+                hashCode = (hashCode * 397) ^ DisableCalleesValidation.GetHashCode();
+                hashCode = (hashCode * 397) ^ (CallbackUrl != null ? CallbackUrl.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
         /// <summary>
         /// The ID of the instruction.
         /// </summary>

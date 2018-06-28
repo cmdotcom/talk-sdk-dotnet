@@ -1,12 +1,49 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
     /// <summary>
     /// Instruction to send an OTP (One Time Password) to the callee.
     /// </summary>
-    public class OtpInstruction : BaseAppInstruction
+    public class OtpInstruction : BaseAppInstruction, IEquatable<OtpInstruction>
     {
+        public bool Equals(OtpInstruction other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(IntroPrompt, other.IntroPrompt) && IntroPromptType == other.IntroPromptType && string.Equals(CodePrompt, other.CodePrompt) && CodePromptType == other.CodePromptType && string.Equals(Code, other.Code) && CodeType == other.CodeType && string.Equals(ReplayPrompt, other.ReplayPrompt) && ReplayPromptType == other.ReplayPromptType && string.Equals(OutroPrompt, other.OutroPrompt) && OutroPromptType == other.OutroPromptType && MaxReplays == other.MaxReplays && AutoReplay == other.AutoReplay && Equals(Voice, other.Voice);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((OtpInstruction) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (IntroPrompt != null ? IntroPrompt.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ IntroPromptType.GetHashCode();
+                hashCode = (hashCode * 397) ^ (CodePrompt != null ? CodePrompt.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ CodePromptType.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Code != null ? Code.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ CodeType.GetHashCode();
+                hashCode = (hashCode * 397) ^ (ReplayPrompt != null ? ReplayPrompt.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ ReplayPromptType.GetHashCode();
+                hashCode = (hashCode * 397) ^ (OutroPrompt != null ? OutroPrompt.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ OutroPromptType.GetHashCode();
+                hashCode = (hashCode * 397) ^ MaxReplays.GetHashCode();
+                hashCode = (hashCode * 397) ^ AutoReplay.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Voice != null ? Voice.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
