@@ -48,7 +48,12 @@ namespace Tests
                 Anonymous = false,
                 DisableCalleesValidation = false,
                 CallbackUrl = "http://www.random.org",
-                Voice = new Voice()
+                Voice = new Voice
+                {
+                    Language = "nl-NL",
+                    Gender = Gender.Female,
+                    Number = 1
+                }
             };
 
             var handler = new FakeHttpMessageHandler();
@@ -82,7 +87,7 @@ namespace Tests
                 CallbackUrl = "http://call.me.back/handler",
                 MaxReplays = 2,
                 ReplayPromptType = PromptType.TTS,
-                ReplayPrompt = "Press 1 to repeat pour code",
+                ReplayPrompt = "Press 1 to repeat your code",
                 OutroPromptType = PromptType.File,
                 OutroPrompt = "prompts/bye.wav",
                 AutoReplay = false,
