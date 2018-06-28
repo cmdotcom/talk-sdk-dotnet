@@ -20,6 +20,7 @@ var client = new VoiceApiClient(httpClient, myApiKey);
 
 `httpClient` is requested as a parameter, such that you can use a single instance throughout your application, as is highly recommended.
 Ideally you would have it injected by Dependency Injection.
+
 `apiKey` is your unique api key (or product token) which authorizes you on the CM platform. Always keep this key secret!
 
 ## Sending an instruction
@@ -46,14 +47,14 @@ var instruction = new NotificationInstruction
 };
 ```
 
-This is an example Notification instruction, which will simyply call the `Callee` while showing the `Caller`. 
+This is an example Notification instruction, which will simply call the `Callee` while showing the `Caller`. 
 When picked up, it will read the prompt using the specified voice and hang up.
 
 To send the instruction, simply call `SendInstruction`  on the client and the call should take place shortly after.
 
 ```cs
-var result = client.SendInstruction(instruction).Result;
+var result = await client.SendInstruction(instruction).ConfigureAwait(false);
 ```
 
-Finally, the result will have a `HttpStatusCode`, `Content` (as string), a boolean indicating `Success` and a call `DeserializeEvent` to Deserialize the result into a `CaallQueuedEvent`
+Finally, the result will have a `HttpStatusCode`, `Content` (as string), a boolean indicating `Success` and a call `DeserializeEvent` to Deserialize the result into a `CallQueuedEvent`
 
