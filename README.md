@@ -19,6 +19,7 @@ https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk
 ## Instantiate a client
 
 ```cs
+var httpClient = new HttpClient();
 var client = new VoiceApiClient(httpClient, myApiKey);
 ```
 
