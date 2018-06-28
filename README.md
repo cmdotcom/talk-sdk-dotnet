@@ -39,9 +39,6 @@ var instruction = new NotificationInstruction
     Callee = "+9876543210",
     PromptType = PromptType.TTS,
     Prompt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu laoreet augue. Fusce fermentum auctor pellentesque.",
-    Anonymous = false,
-    DisableCalleesValidation = false,
-    CallbackUrl = "http://www.random.org",
     Voice = new Voice
     {
         Language = "nl-NL",
