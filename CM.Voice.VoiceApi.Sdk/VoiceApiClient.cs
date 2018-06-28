@@ -12,17 +12,10 @@ namespace CM.Voice.VoiceApi.Sdk
 {
     public class VoiceApiClient
     {
-        private readonly HttpMessageInvoker _httpClient;
+        private readonly HttpClient _httpClient;
         private readonly Guid _apiKey;
         private readonly string _url;
         private const string ApiKeyHeader = "X-CM-PRODUCTTOKEN";
-
-        private VoiceApiClient(HttpMessageInvoker httpClient, Guid apiKey, string url)
-        {
-            _httpClient = httpClient;
-            _apiKey = apiKey;
-            _url = url;
-        }
 
         /// <summary>
         /// Default ctor
@@ -30,10 +23,13 @@ namespace CM.Voice.VoiceApi.Sdk
         /// <param name="httpClient">The HttpClient to use for sending the instruction. You should use a singleton of this for your entire application.</param>
         /// <param name="apiKey">Your ApiKey or Producttoken, used for authentication.</param>
         /// <param name="url">The base URL of the CM Voice API. Optional.</param>
-        public VoiceApiClient(HttpClient httpClient, Guid apiKey, string url = "https://api.cmtelecom.com/voiceapi/v2") : this((HttpMessageInvoker)httpClient, apiKey, url)
-        {
-        }
 
+        public VoiceApiClient(HttpClient httpClient, Guid apiKey, string url = "https://api.cmtelecom.com/voiceapi/v2")
+        {
+            _httpClient = httpClient;
+            _apiKey = apiKey;
+            _url = url;
+        }
 
         /// <summary>
         /// Sends a notification instruction to CM.
