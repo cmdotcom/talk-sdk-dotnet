@@ -10,6 +10,10 @@ SDK for use with the CM VoiceAPI
 
 https://docs.cmtelecom.com/voice-api-apps/v2.0
 
+## Nuget download
+
+https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk
+
 # Usage
 
 ## Instantiate a client
