@@ -195,8 +195,7 @@ namespace Tests
 
             Assert.Equal(HttpStatusCode.OK, result.HttpStatusCode);
             Assert.Equal(evtJson, result.Content);
-            Assert.Equal(evt, result.DeserializeEvent());
+            Assert.Equal(evt, result.DeserializeEvent(), new CallQueuedEventEqualityComparer());
         }
-
     }
 }

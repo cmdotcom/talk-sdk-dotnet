@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
