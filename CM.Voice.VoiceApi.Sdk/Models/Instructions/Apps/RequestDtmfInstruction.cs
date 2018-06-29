@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
@@ -7,44 +6,8 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
     /// <summary>
     /// Instruction to place a call and request DTMF from the callee.
     /// </summary>
-    public class RequestDtmfInstruction : BaseAppInstruction, IEquatable<RequestDtmfInstruction>
+    public class RequestDtmfInstruction : BaseAppInstruction
     {
-        public bool Equals(RequestDtmfInstruction other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Prompt, other.Prompt) && PromptType == other.PromptType && string.Equals(ValidPrompt, other.ValidPrompt) && ValidPromptType == other.ValidPromptType && string.Equals(InvalidPrompt, other.InvalidPrompt) && InvalidPromptType == other.InvalidPromptType && MinDigits == other.MinDigits && MaxDigits == other.MaxDigits && MaxAttempts == other.MaxAttempts && TimeOut == other.TimeOut && string.Equals(Terminators, other.Terminators) && string.Equals(DigitsRegex, other.DigitsRegex) && Equals(Voice, other.Voice);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((RequestDtmfInstruction) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = (Prompt != null ? Prompt.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ PromptType.GetHashCode();
-                hashCode = (hashCode * 397) ^ (ValidPrompt != null ? ValidPrompt.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ ValidPromptType.GetHashCode();
-                hashCode = (hashCode * 397) ^ (InvalidPrompt != null ? InvalidPrompt.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ InvalidPromptType.GetHashCode();
-                hashCode = (hashCode * 397) ^ MinDigits.GetHashCode();
-                hashCode = (hashCode * 397) ^ MaxDigits.GetHashCode();
-                hashCode = (hashCode * 397) ^ MaxAttempts.GetHashCode();
-                hashCode = (hashCode * 397) ^ TimeOut.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Terminators != null ? Terminators.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (DigitsRegex != null ? DigitsRegex.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Voice != null ? Voice.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
