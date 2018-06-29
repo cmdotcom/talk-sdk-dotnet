@@ -12,6 +12,7 @@
     <PackageTags>SDK, CM, VoiceAPI</PackageTags>
     <Copyright>2018 CM Telecom</Copyright>
     <PackageLicenseUrl>https://mit-license.org</PackageLicenseUrl>
+    <PackageReleaseNotes>First version with support for sending instructions using a simple client.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
