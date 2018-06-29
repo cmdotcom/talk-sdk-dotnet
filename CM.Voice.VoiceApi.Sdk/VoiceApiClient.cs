@@ -34,7 +34,7 @@ namespace CM.Voice.VoiceApi.Sdk
         /// <summary>
         /// Sends a notification instruction to CM.
         /// </summary>
-        /// <param name="instruction">The instruction, containing all information on the notification to send out.</param>
+        /// <param name="instruction">The instruction, containing all information on the call to send out.</param>
         /// <param name="cancellationToken">Token to cancel the operation.</param>
         public async Task<VoiceApiResult<CallQueuedEvent>> SendInstruction(BaseAppInstruction instruction, CancellationToken cancellationToken = default(CancellationToken))
         {
