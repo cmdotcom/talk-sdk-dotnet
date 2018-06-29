@@ -1,7 +1,8 @@
-| branch | build status | test status |
-| --- | --- | --- |
-| master | [![build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master) | [![test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master/tests)
-| develop | [![build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/develop.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/develop) | [![test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/develop.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/develop/tests)
+[![build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master)
+[![test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master/tests)
+[![NuGet](https://img.shields.io/nuget/v/CM.Voice.VoiceApi.Sdk.svg "Nuget Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
+[![NuGet](https://img.shields.io/nuget/vpre/CM.Voice.VoiceApi.Sdk.svg "Nuget Prerelease Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
+[![NuGet](https://img.shields.io/nuget/dt/CM.Voice.VoiceApi.Sdk.svg "Nuget downloads")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
 
 # VoiceApiSdk
 SDK for use with the CM VoiceAPI
@@ -9,10 +10,6 @@ SDK for use with the CM VoiceAPI
 ## API Documentation
 
 https://docs.cmtelecom.com/voice-api-apps/v2.0
-
-## Nuget download
-
-https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk
 
 # Usage
 
