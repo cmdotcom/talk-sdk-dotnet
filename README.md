@@ -49,6 +49,9 @@ var instruction = new NotificationInstruction
 This is an example Notification instruction, which will simply call the `Callee` while showing the `Caller`. 
 When picked up, it will read the prompt using the specified voice and hang up.
 
+The other instructions are the `OtpInstruction` (for sending a One Time Password) and the `RequestDtmfInstruction` (for calling and requesting numerical input from the callee).
+More information on the various fields and their uses can be found in the docs (https://docs.cmtelecom.com/voice-api-apps/v2.0), as well as the list of possible voices.
+
 To send the instruction, simply call `SendInstruction`  on the client and the call should take place shortly after.
 
 ```cs
