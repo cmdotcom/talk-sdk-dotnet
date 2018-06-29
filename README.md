@@ -58,5 +58,5 @@ To send the instruction, simply call `SendInstruction`  on the client and the ca
 var result = await client.SendInstruction(instruction).ConfigureAwait(false);
 ```
 
-Finally, the result will have a `HttpStatusCode`, `Content` (as string), a boolean indicating `Success` and a call `DeserializeEvent` to Deserialize the result into a `CallQueuedEvent`
+Finally, the result will have a `HttpStatusCode`, `Content` (as string), a boolean indicating `Success` and a call `DeserializeEvent()` to Deserialize the result into a `CallQueuedEvent`
 
