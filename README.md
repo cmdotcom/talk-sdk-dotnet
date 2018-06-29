@@ -1,8 +1,8 @@
-[![build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master)
-[![test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master/tests)
-[![NuGet](https://img.shields.io/nuget/v/CM.Voice.VoiceApi.Sdk.svg "Nuget Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
-[![NuGet](https://img.shields.io/nuget/vpre/CM.Voice.VoiceApi.Sdk.svg "Nuget Prerelease Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
-[![NuGet](https://img.shields.io/nuget/dt/CM.Voice.VoiceApi.Sdk.svg "Nuget downloads")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
+[![Build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master)
+[![Test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master/tests)
+[![NuGetV](https://img.shields.io/nuget/v/CM.Voice.VoiceApi.Sdk.svg "Nuget Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
+[![NuGetVPre](https://img.shields.io/nuget/vpre/CM.Voice.VoiceApi.Sdk.svg "Nuget Prerelease Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
+[![NuGetDownloads](https://img.shields.io/nuget/dt/CM.Voice.VoiceApi.Sdk.svg "Nuget downloads")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
 
 # VoiceApiSdk
 SDK for use with the CM VoiceAPI
@@ -32,7 +32,7 @@ Before we can send an instruction, we need to create one.
 ```cs
 var instruction = new NotificationInstruction
 {
-    InstructionId = Guid.NewGuid().ToString(),
+    InstructionId = "My InstructionId",
     Caller = "+1234567890",
     Callee = "+9876543210",
     PromptType = PromptType.TTS,
