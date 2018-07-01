@@ -36,7 +36,7 @@ namespace CM.Voice.VoiceApi.Sdk
         /// </summary>
         /// <param name="instruction">The instruction, containing all information on the call to send out.</param>
         /// <param name="cancellationToken">Token to cancel the operation.</param>
-        public async Task<VoiceApiResult<CallQueuedEvent>> SendInstruction(BaseAppInstruction instruction, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<VoiceApiResult<CallQueuedEvent>> SendAsync(BaseAppInstruction instruction, CancellationToken cancellationToken = default(CancellationToken))
         {
             var urlSuffix = GetUrlSuffix(instruction);
 
@@ -61,6 +61,13 @@ namespace CM.Voice.VoiceApi.Sdk
                     };
                 }
             }
+        }
+
+        [Obsolete("See SendAsync")]
+        public Task<VoiceApiResult<CallQueuedEvent>> SendInstruction(BaseAppInstruction instruction,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return SendAsync(instruction, cancellationToken);
         }
 
         private static string GetUrlSuffix(BaseAppInstruction instruction)
