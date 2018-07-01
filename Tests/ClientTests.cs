@@ -60,7 +60,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendInstruction(instruction).Wait();
+            client.SendAsync(instruction).Wait();
 
             Assert.Single(handler.RequestMessages);
             var request = handler.RequestMessages.First();
@@ -100,7 +100,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendInstruction(instruction).Wait();
+            client.SendAsync(instruction).Wait();
 
             Assert.Single(handler.RequestMessages);
             var request = handler.RequestMessages.First();
@@ -145,7 +145,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendInstruction(instruction).Wait();
+            client.SendAsync(instruction).Wait();
 
             Assert.Single(handler.RequestMessages);
             var request = handler.RequestMessages.First();
@@ -191,7 +191,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            var result = client.SendInstruction(instruction).Result;
+            var result = client.SendAsync(instruction).Result;
 
             Assert.Equal(HttpStatusCode.OK, result.HttpStatusCode);
             Assert.Equal(evtJson, result.Content);
