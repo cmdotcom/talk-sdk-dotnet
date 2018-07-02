@@ -17,13 +17,13 @@ https://docs.cmtelecom.com/voice-api-apps/v2.0
 
 ```cs
 var httpClient = new HttpClient();
-var client = new VoiceApiClient(httpClient, myApiKey);
+var voiceApiClient = new VoiceApiClient(httpClient, myApiKey);
 ```
 
 `httpClient` is requested as a parameter, such that you can use a single instance throughout your application, as is highly recommended.
 Ideally you would have it injected by Dependency Injection.
 
-`apiKey` is your unique api key (or product token) which authorizes you on the CM platform. Always keep this key secret!
+`myApiKey` is your unique api key (or product token) which authorizes you on the CM platform. Always keep this key secret!
 
 ## Sending an instruction
 
@@ -55,7 +55,7 @@ More information on the various fields and their uses can be found in the docs (
 To send the instruction, simply call `SendAsync()`  on the client and the call should take place shortly after.
 
 ```cs
-var result = await client.SendAsync(instruction).ConfigureAwait(false);
+var result = await voiceApiClient.SendAsync(instruction).ConfigureAwait(false);
 ```
 
 Finally, the result will have a `HttpStatusCode`, `Content` (as string), a boolean indicating `Success` and a call `DeserializeEvent()` to Deserialize the result into a `CallQueuedEvent`
