@@ -1,10 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
     /// <summary>
-    /// Instruction to send an OTP (One Time Password) to the callee.
+    /// Instruction to send a One Time Password (OTP) to the callee.
     /// </summary>
     public class OtpInstruction : BaseAppInstruction
     {
@@ -18,7 +17,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("intro-prompt-type", Order = 8, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? IntroPromptType { get; set; }
+        public PromptType? IntroPromptType { get; set; } = PromptType.TTS;
 
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
@@ -30,7 +29,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("code-prompt-type", Order = 10, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? CodePromptType { get; set; }
+        public PromptType? CodePromptType { get; set; } = PromptType.TTS;
 
         /// <summary>
         /// The OTP code.
@@ -42,7 +41,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("code-type", Order = 12, NullValueHandling = NullValueHandling.Ignore)]
-        public CodeType? CodeType { get; set; }
+        public CodeType? CodeType { get; set; } = Models.CodeType.TTS;
 
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
@@ -54,7 +53,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("replay-prompt-type", Order = 14, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? ReplayPromptType { get; set; }
+        public PromptType? ReplayPromptType { get; set; } = PromptType.TTS;
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
@@ -65,7 +64,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("outro-prompt-type", Order = 16, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? OutroPromptType { get; set; }
+        public PromptType? OutroPromptType { get; set; } = PromptType.TTS;
 
         /// <summary>
         /// The number of times the code can be played. Min = 1, Max = 10.
@@ -78,11 +77,5 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("auto-replay", Order = 17, NullValueHandling = NullValueHandling.Ignore)]
         public bool? AutoReplay { get; set; }
-
-        /// <summary>
-        /// Information on the voice to use if the prompt is of type tts.
-        /// </summary>
-        [JsonProperty("voice", Order = 18, NullValueHandling = NullValueHandling.Ignore)]
-        public Voice Voice { get; set; }
     }
 }

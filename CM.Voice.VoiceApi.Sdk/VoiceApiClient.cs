@@ -71,11 +71,11 @@ namespace CM.Voice.VoiceApi.Sdk
         {
             switch (instruction)
             {
-                case NotificationInstruction notificationInstruction:
+                case NotificationInstruction _:
                     return  "/Notification";
-                case OtpInstruction otpInstruction:
+                case OtpInstruction _:
                     return "/OTP";
-                case RequestDtmfInstruction requestDtmfInstruction:
+                case RequestDtmfInstruction _:
                     return "/DTMF";
 
                 default:

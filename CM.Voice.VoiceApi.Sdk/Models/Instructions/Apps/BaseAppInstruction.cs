@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
@@ -47,9 +46,16 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         public bool DisableCalleesValidation { get; set; }
 
         /// <summary>
+        /// Information on the voice to use if (any of) the prompt(s) is of type tts.
+        /// </summary>
+        [JsonProperty("voice", Order = 99, NullValueHandling = NullValueHandling.Ignore)]
+        public Voice Voice { get; set; }
+
+        /// <summary>
         /// The url to send the POST command to for further VoiceAPI flow.
         /// </summary>
         [JsonProperty("callback-url", Order = 100, NullValueHandling = NullValueHandling.Ignore)]
         public string CallbackUrl { get; set; }
+
     }
 }
