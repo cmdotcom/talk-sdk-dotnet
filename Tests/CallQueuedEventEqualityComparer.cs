@@ -1,4 +1,5 @@
-﻿using CM.Voice.VoiceApi.Sdk.Models.Events;
+﻿using System;
+using CM.Voice.VoiceApi.Sdk.Models.Events;
 using System.Collections.Generic;
 
 namespace Tests

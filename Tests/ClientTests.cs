@@ -16,9 +16,9 @@ namespace Tests
 {
     public class ClientTests
     {
-        private const string url = "https://api.cmtelecom.com/voiceapi/v2";
+        private const string Url = "https://api.cmtelecom.com/voiceapi/v2";
 
-        public class FakeHttpMessageHandler : HttpMessageHandler
+        private class MockHttpMessageHandler : HttpMessageHandler
         {
             public List<(HttpRequestMessage HttpRequestMessage, string Content)> RequestMessages { get; private set; } =
                 new List<(HttpRequestMessage HttpRequestMessage, string Content)>();
@@ -27,12 +27,10 @@ namespace Tests
             {
                 RequestMessages.Add((request, request.Content.ReadAsStringAsync().Result));
 
-                //return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
-                return ReturnFunction();
+                return Task.FromResult(Response);
             }
 
-            public delegate Task<HttpResponseMessage> ReturnFunc();
-            public ReturnFunc ReturnFunction { get; set; } = () => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
+            public HttpResponseMessage Response { get; set; } = new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Fact]
@@ -56,7 +54,7 @@ namespace Tests
                 }
             };
 
-            var handler = new FakeHttpMessageHandler();
+            var handler = new MockHttpMessageHandler();
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
@@ -64,7 +62,7 @@ namespace Tests
 
             Assert.Single(handler.RequestMessages);
             var request = handler.RequestMessages.First();
-            Assert.Equal(url + "/Notification", request.HttpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(Url + "/Notification", request.HttpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
             Assert.Equal(json, request.Content);
@@ -96,7 +94,7 @@ namespace Tests
                 Voice = new Voice()
             };
 
-            var handler = new FakeHttpMessageHandler();
+            var handler = new MockHttpMessageHandler();
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
@@ -104,7 +102,7 @@ namespace Tests
 
             Assert.Single(handler.RequestMessages);
             var request = handler.RequestMessages.First();
-            Assert.Equal(url + "/OTP", request.HttpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(Url + "/OTP", request.HttpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
             Assert.Equal(json, request.Content);
@@ -141,7 +139,7 @@ namespace Tests
                 }
             };
 
-            var handler = new FakeHttpMessageHandler();
+            var handler = new MockHttpMessageHandler();
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
@@ -149,7 +147,7 @@ namespace Tests
 
             Assert.Single(handler.RequestMessages);
             var request = handler.RequestMessages.First();
-            Assert.Equal(url + "/DTMF", request.HttpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(Url + "/DTMF", request.HttpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
             Assert.Equal(json, request.Content);
@@ -184,9 +182,9 @@ namespace Tests
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
             var evtJson = JsonConvert.SerializeObject(evt);
             responseMessage.Content = new StringContent(evtJson);
-            var handler = new FakeHttpMessageHandler
+            var handler = new MockHttpMessageHandler
             {
-                ReturnFunction = () => Task.FromResult(responseMessage)
+                Response = responseMessage
             };
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
