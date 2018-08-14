@@ -49,7 +49,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// Information on the voice to use if (any of) the prompt(s) is of type tts.
         /// </summary>
         [JsonProperty("voice", Order = 99, NullValueHandling = NullValueHandling.Ignore)]
-        public Voice Voice { get; set; }
+        public Voice Voice { get; set; } = new Voice();
 
         /// <summary>
         /// The url to send the POST command to for further VoiceAPI flow.

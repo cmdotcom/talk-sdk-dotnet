@@ -20,13 +20,12 @@ namespace Tests
 
         private class MockHttpMessageHandler : HttpMessageHandler
         {
-            public List<(HttpRequestMessage HttpRequestMessage, string Content)> RequestMessages { get; private set; } =
+            public List<(HttpRequestMessage HttpRequestMessage, string Content)> RequestMessages { get; } =
                 new List<(HttpRequestMessage HttpRequestMessage, string Content)>();
 
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 RequestMessages.Add((request, request.Content.ReadAsStringAsync().Result));
-
                 return Task.FromResult(Response);
             }
 
