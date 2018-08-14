@@ -74,7 +74,7 @@ namespace Tests
             {
                 InstructionId = "UnitTest",
                 Caller = "+1234567890",
-                Callees = new [] { "+9876543210", "+2468013579" },
+                Callees = new[] {"+9876543210", "+2468013579"},
                 IntroPromptType = PromptType.TTS,
                 IntroPrompt = "Welcome to the C M password service.",
                 CodePromptType = PromptType.File,
@@ -89,8 +89,7 @@ namespace Tests
                 OutroPrompt = "prompts/bye.wav",
                 AutoReplay = false,
                 Anonymous = true,
-                DisableCalleesValidation = true,
-                Voice = new Voice()
+                DisableCalleesValidation = true
             };
 
             var handler = new MockHttpMessageHandler();
@@ -164,8 +163,7 @@ namespace Tests
                 Prompt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu laoreet augue. Fusce fermentum auctor pellentesque.",
                 Anonymous = false,
                 DisableCalleesValidation = false,
-                CallbackUrl = "http://www.random.org",
-                Voice = new Voice()
+                CallbackUrl = "http://www.random.org"
             };
 
             var evt = new CallQueuedEvent
@@ -257,8 +255,7 @@ namespace Tests
                 OutroPrompt = "prompts/bye.wav",
                 AutoReplay = false,
                 Anonymous = true,
-                DisableCalleesValidation = true,
-                Voice = new Voice()
+                DisableCalleesValidation = true
             };
 
             var handler = new MockHttpMessageHandler();
