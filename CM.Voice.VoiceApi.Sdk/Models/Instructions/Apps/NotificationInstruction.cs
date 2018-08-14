@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
@@ -18,12 +17,6 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("prompt-type", Order = 8, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? PromptType { get; set; }
-
-        /// <summary>
-        /// Information on the voice to use if the prompt is of type tts.
-        /// </summary>
-        [JsonProperty("voice", Order = 9, NullValueHandling = NullValueHandling.Ignore)]
-        public Voice Voice { get; set; }
+        public PromptType? PromptType { get; set; } = Models.PromptType.TTS;
     }
 }

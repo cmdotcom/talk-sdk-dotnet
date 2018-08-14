@@ -18,7 +18,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("prompt-type", Order = 8, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? PromptType { get; set; }
+        public PromptType? PromptType { get; set; } = Models.PromptType.TTS;
 
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
@@ -30,7 +30,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("valid-prompt-type", Order = 10, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? ValidPromptType { get; set; }
+        public PromptType? ValidPromptType { get; set; } = Models.PromptType.TTS;
 
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
@@ -42,7 +42,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// The type of the prompt, either file or tts.
         /// </summary>
         [JsonProperty("invalid-prompt-type", Order = 12, NullValueHandling = NullValueHandling.Ignore)]
-        public PromptType? InvalidPromptType { get; set; }
+        public PromptType? InvalidPromptType { get; set; } = Models.PromptType.TTS;
 
         /// <summary>
         /// The minimum number of digits for the dtmf input
@@ -79,11 +79,5 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("regex", Order = 18, NullValueHandling = NullValueHandling.Ignore)]
         public string DigitsRegex { get; set; }
-
-        /// <summary>
-        /// Information on the voice to use if the prompt is of type tts.
-        /// </summary>
-        [JsonProperty("voice", Order = 19, NullValueHandling = NullValueHandling.Ignore)]
-        public Voice Voice { get; set; }
     }
 }

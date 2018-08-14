@@ -64,21 +64,18 @@ namespace CM.Voice.VoiceApi.Sdk
         }
 
         [Obsolete("See SendAsync")]
-        public Task<VoiceApiResult<CallQueuedEvent>> SendInstruction(BaseAppInstruction instruction,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return SendAsync(instruction, cancellationToken);
-        }
+        public Task<VoiceApiResult<CallQueuedEvent>> SendInstruction(BaseAppInstruction instruction, CancellationToken cancellationToken = default(CancellationToken))
+            => SendAsync(instruction, cancellationToken);
 
         private static string GetUrlSuffix(BaseAppInstruction instruction)
         {
             switch (instruction)
             {
-                case NotificationInstruction notificationInstruction:
+                case NotificationInstruction _:
                     return  "/Notification";
-                case OtpInstruction otpInstruction:
+                case OtpInstruction _:
                     return "/OTP";
-                case RequestDtmfInstruction requestDtmfInstruction:
+                case RequestDtmfInstruction _:
                     return "/DTMF";
 
                 default:
