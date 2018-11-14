@@ -23,10 +23,10 @@ namespace Tests
             public List<(HttpRequestMessage HttpRequestMessage, string Content)> RequestMessages { get; } =
                 new List<(HttpRequestMessage HttpRequestMessage, string Content)>();
 
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                RequestMessages.Add((request, request.Content.ReadAsStringAsync().Result));
-                return Task.FromResult(Response);
+                RequestMessages.Add((request, await request.Content.ReadAsStringAsync().ConfigureAwait(false)));
+                return Response;
             }
 
             public HttpResponseMessage Response { get; set; } = new HttpResponseMessage(HttpStatusCode.OK);
@@ -197,7 +197,7 @@ namespace Tests
 
 
 
-
+#pragma warning disable CS0618 // Type or member is obsolete
         [Fact]
         public void TestObsoleteNotification()
         {
@@ -359,5 +359,6 @@ namespace Tests
             Assert.Equal(evtJson, result.Content);
             Assert.Equal(evt, result.DeserializeEvent(), new CallQueuedEventEqualityComparer());
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
