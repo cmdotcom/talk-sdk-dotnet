@@ -24,7 +24,7 @@ Ideally you would have it injected by Dependency Injection.
 
 `myApiKey` is your unique api key (or product token) which authorizes you on the CM platform. Always keep this key secret!
 
-## Sending an instruction
+## Send an instruction
 
 Before we can send an instruction, we need to create one.
 
