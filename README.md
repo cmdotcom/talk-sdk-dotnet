@@ -1,7 +1,6 @@
 [![Build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master)
 [![Test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master/tests)
 [![NuGetV](https://img.shields.io/nuget/v/CM.Voice.VoiceApi.Sdk.svg "Nuget Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
-[![NuGetVPre](https://img.shields.io/nuget/vpre/CM.Voice.VoiceApi.Sdk.svg "Nuget Prerelease Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
 [![NuGetDownloads](https://img.shields.io/nuget/dt/CM.Voice.VoiceApi.Sdk.svg "Nuget downloads")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
 
 # VoiceApiSdk
@@ -25,7 +24,7 @@ Ideally you would have it injected by Dependency Injection.
 
 `myApiKey` is your unique api key (or product token) which authorizes you on the CM platform. Always keep this key secret!
 
-## Sending an instruction
+## Send an instruction
 
 Before we can send an instruction, we need to create one.
 

@@ -18,5 +18,12 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("prompt-type", Order = 8, NullValueHandling = NullValueHandling.Ignore)]
         public PromptType? PromptType { get; set; } = Models.PromptType.TTS;
+
+        /// <summary>
+        /// Determines the Voicemail detection flow.
+        /// </summary>
+        [JsonProperty("voicemail-response", Order = 9)]
+        public VoicemailResponse VoicemailResponse { get; set; } = VoicemailResponse.Ignore;
+
     }
 }
