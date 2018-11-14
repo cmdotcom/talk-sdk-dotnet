@@ -75,7 +75,14 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// <summary>
         /// The code-prompt and code will replay automatically repeat if true, it will wait for a press on the "1" otherwise.
         /// </summary>
-        [JsonProperty("auto-replay", Order = 17, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("auto-replay", Order = 18, NullValueHandling = NullValueHandling.Ignore)]
         public bool? AutoReplay { get; set; }
+
+        /// <summary>
+        /// Determines the Voicemail detection flow.
+        /// </summary>
+        [JsonProperty("voicemail-response", Order = 19)]
+        public VoicemailResponse VoicemailResponse { get; set; } = VoicemailResponse.Ignore;
+
     }
 }
