@@ -24,20 +24,11 @@ namespace CM.Voice.VoiceApi.Sdk.Models
         /// </summary>
         [JsonProperty("number", Order = 3)]
         public int Number { get; set; } = 1;
-    }
 
-    /// <summary>
-    /// Gender, so either male or female.
-    /// </summary>
-    public enum Gender
-    {
         /// <summary>
-        /// Male
+        /// Volume of the speaking voice. Defaults to default.
         /// </summary>
-        Male,
-        /// <summary>
-        /// Female
-        /// </summary>
-        Female
+        [JsonProperty("volume", Order = 4)]
+        public sbyte Volume { get; set; }
     }
 }

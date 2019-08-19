@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CM.Voice.VoiceApi.Sdk.Models.Events
+namespace CM.Voice.VoiceApi.Sdk.Models.Events.Apps
 {
     /// <summary>
     /// Event that is a result (basically a direct response) to the PlaceCallInstruction.
