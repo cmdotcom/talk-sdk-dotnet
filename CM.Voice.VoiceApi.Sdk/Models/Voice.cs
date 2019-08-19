@@ -26,8 +26,9 @@ namespace CM.Voice.VoiceApi.Sdk.Models
         public int Number { get; set; } = 1;
 
         /// <summary>
-        /// Volume of the speaking voice. Defaults to default.
+        /// Volume of the speaking voice. Defaults to 0.
         /// </summary>
+        /// <remarks>Allowed values are -4, -3, -2, -1, 0, 1, 2, 3 or 4.</remarks>
         [JsonProperty("volume", Order = 4)]
         public sbyte Volume { get; set; }
     }
