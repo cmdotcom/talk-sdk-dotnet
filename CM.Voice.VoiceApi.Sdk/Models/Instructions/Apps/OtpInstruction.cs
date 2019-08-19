@@ -83,6 +83,5 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("voicemail-response", Order = 19)]
         public VoicemailResponse VoicemailResponse { get; set; } = VoicemailResponse.Ignore;
-
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CM.Voice.VoiceApi.Sdk.Models
+﻿namespace CM.Voice.VoiceApi.Sdk.Models
 {
     /// <summary>
     /// Determines the response when a voicemail beep is detected.

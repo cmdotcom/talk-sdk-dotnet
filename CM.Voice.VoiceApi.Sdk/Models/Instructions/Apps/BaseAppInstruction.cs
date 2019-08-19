@@ -25,7 +25,6 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         [JsonProperty("callees", Order = 4)]
         public string[] Callees { get; set; }
 
-
         /// <summary>
         /// The caller id to show on the end user's phone.
         /// </summary>
@@ -56,6 +55,5 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("callback-url", Order = 100, NullValueHandling = NullValueHandling.Ignore)]
         public string CallbackUrl { get; set; }
-
     }
 }

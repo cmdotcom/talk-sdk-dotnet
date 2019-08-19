@@ -1,5 +1,4 @@
-﻿using System;
-using CM.Voice.VoiceApi.Sdk.Models.Events;
+﻿using CM.Voice.VoiceApi.Sdk.Models.Events.Apps;
 using System.Collections.Generic;
 
 namespace Tests
@@ -19,7 +18,7 @@ namespace Tests
         {
             unchecked
             {
-                var hashCode = (obj.Caller != null ? obj.Caller.GetHashCode() : 0);
+                var hashCode = obj.Caller != null ? obj.Caller.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ obj.CallId.GetHashCode();
                 hashCode = (hashCode * 397) ^ (obj.InstructionId != null ? obj.InstructionId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (obj.Callee != null ? obj.Callee.GetHashCode() : 0);

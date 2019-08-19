@@ -1,6 +1,6 @@
 using CM.Voice.VoiceApi.Sdk;
 using CM.Voice.VoiceApi.Sdk.Models;
-using CM.Voice.VoiceApi.Sdk.Models.Events;
+using CM.Voice.VoiceApi.Sdk.Models.Events.Apps;
 using CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps;
 using Newtonsoft.Json;
 using System;
@@ -29,11 +29,11 @@ namespace Tests
                 return Response;
             }
 
-            public HttpResponseMessage Response { get; set; } = new HttpResponseMessage(HttpStatusCode.OK);
+            public HttpResponseMessage Response { private get; set; } = new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Fact]
-        public void TestNotification()
+        public async Task TestNotification()
         {
             var instruction = new NotificationInstruction
             {
@@ -49,7 +49,8 @@ namespace Tests
                 {
                     Language = "nl-NL",
                     Gender = Gender.Female,
-                    Number = 1
+                    Number = 1,
+                    Volume = 4
                 }
             };
 
@@ -57,24 +58,24 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendAsync(instruction).Wait();
+            await client.SendAsync(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
-            var request = handler.RequestMessages.First();
-            Assert.Equal(Url + "/Notification", request.HttpRequestMessage.RequestUri.AbsoluteUri);
-            Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
+            var (httpRequestMessage, content) = handler.RequestMessages.First();
+            Assert.Equal(Url + "/Notification", httpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
-            Assert.Equal(json, request.Content);
+            Assert.Equal(json, content);
         }
 
         [Fact]
-        public void TestOtp()
+        public async Task TestOtp()
         {
             var instruction = new OtpInstruction
             {
                 InstructionId = "UnitTest",
                 Caller = "+1234567890",
-                Callees = new[] {"+9876543210", "+2468013579"},
+                Callees = new[] { "+9876543210", "+2468013579" },
                 IntroPromptType = PromptType.TTS,
                 IntroPrompt = "Welcome to the C M password service.",
                 CodePromptType = PromptType.File,
@@ -96,18 +97,18 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendAsync(instruction).Wait();
+            await client.SendAsync(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
-            var request = handler.RequestMessages.First();
-            Assert.Equal(Url + "/OTP", request.HttpRequestMessage.RequestUri.AbsoluteUri);
-            Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
+            var (httpRequestMessage, content) = handler.RequestMessages.First();
+            Assert.Equal(Url + "/OTP", httpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
-            Assert.Equal(json, request.Content);
+            Assert.Equal(json, content);
         }
 
         [Fact]
-        public void TestDtmf()
+        public async Task TestDtmf()
         {
             var instruction = new RequestDtmfInstruction
             {
@@ -133,7 +134,8 @@ namespace Tests
                 {
                     Language = "en-IN",
                     Gender = Gender.Female,
-                    Number = 2
+                    Number = 2,
+                    Volume = 4
                 }
             };
 
@@ -141,18 +143,18 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendAsync(instruction).Wait();
+            await client.SendAsync(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
-            var request = handler.RequestMessages.First();
-            Assert.Equal(Url + "/DTMF", request.HttpRequestMessage.RequestUri.AbsoluteUri);
-            Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
+            var (httpRequestMessage, content) = handler.RequestMessages.First();
+            Assert.Equal(Url + "/DTMF", httpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
-            Assert.Equal(json, request.Content);
+            Assert.Equal(json, content);
         }
 
         [Fact]
-        public void TestCallQueuedEvent()
+        public async Task TestCallQueuedEvent()
         {
             var instruction = new NotificationInstruction
             {
@@ -186,20 +188,16 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            var result = client.SendAsync(instruction).Result;
+            var result = await client.SendAsync(instruction).ConfigureAwait(false);
 
             Assert.Equal(HttpStatusCode.OK, result.HttpStatusCode);
             Assert.Equal(evtJson, result.Content);
             Assert.Equal(evt, result.DeserializeEvent(), new CallQueuedEventEqualityComparer());
         }
 
-
-
-
-
 #pragma warning disable CS0618 // Type or member is obsolete
         [Fact]
-        public void TestObsoleteNotification()
+        public async Task TestObsoleteNotification()
         {
             var instruction = new NotificationInstruction
             {
@@ -215,7 +213,8 @@ namespace Tests
                 {
                     Language = "nl-NL",
                     Gender = Gender.Female,
-                    Number = 1
+                    Number = 1,
+                    Volume = 4
                 }
             };
 
@@ -223,18 +222,18 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendInstruction(instruction).Wait();
+            await client.SendInstructionAsync(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
-            var request = handler.RequestMessages.First();
-            Assert.Equal(Url + "/Notification", request.HttpRequestMessage.RequestUri.AbsoluteUri);
-            Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
+            var (httpRequestMessage, content) = handler.RequestMessages.First();
+            Assert.Equal(Url + "/Notification", httpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
-            Assert.Equal(json, request.Content);
+            Assert.Equal(json, content);
         }
 
         [Fact]
-        public void TestObsoleteOtp()
+        public async Task TestObsoleteOtp()
         {
             var instruction = new OtpInstruction
             {
@@ -262,18 +261,18 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendInstruction(instruction).Wait();
+            await client.SendInstructionAsync(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
-            var request = handler.RequestMessages.First();
-            Assert.Equal(Url + "/OTP", request.HttpRequestMessage.RequestUri.AbsoluteUri);
-            Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
+            var (httpRequestMessage, content) = handler.RequestMessages.First();
+            Assert.Equal(Url + "/OTP", httpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
-            Assert.Equal(json, request.Content);
+            Assert.Equal(json, content);
         }
 
         [Fact]
-        public void TestObsoleteDtmf()
+        public async Task TestObsoleteDtmf()
         {
             var instruction = new RequestDtmfInstruction
             {
@@ -299,7 +298,8 @@ namespace Tests
                 {
                     Language = "en-IN",
                     Gender = Gender.Female,
-                    Number = 2
+                    Number = 2,
+                    Volume = 4
                 }
             };
 
@@ -307,18 +307,18 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            client.SendInstruction(instruction).Wait();
+            await client.SendInstructionAsync(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
-            var request = handler.RequestMessages.First();
-            Assert.Equal(Url + "/DTMF", request.HttpRequestMessage.RequestUri.AbsoluteUri);
-            Assert.Equal(HttpMethod.Post, request.HttpRequestMessage.Method);
+            var (httpRequestMessage, content) = handler.RequestMessages.First();
+            Assert.Equal(Url + "/DTMF", httpRequestMessage.RequestUri.AbsoluteUri);
+            Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
             var json = JsonConvert.SerializeObject(instruction);
-            Assert.Equal(json, request.Content);
+            Assert.Equal(json, content);
         }
 
         [Fact]
-        public void TestObsoleteCallQueuedEvent()
+        public async Task TestObsoleteCallQueuedEvent()
         {
             var instruction = new NotificationInstruction
             {
@@ -353,7 +353,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            var result = client.SendInstruction(instruction).Result;
+            var result = await client.SendInstructionAsync(instruction).ConfigureAwait(false);
 
             Assert.Equal(HttpStatusCode.OK, result.HttpStatusCode);
             Assert.Equal(evtJson, result.Content);
