@@ -54,6 +54,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("replay-prompt-type", Order = 14, NullValueHandling = NullValueHandling.Ignore)]
         public PromptType? ReplayPromptType { get; set; } = PromptType.TTS;
+
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
@@ -67,7 +68,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         public PromptType? OutroPromptType { get; set; } = PromptType.TTS;
 
         /// <summary>
-        /// The number of times the code can be played. Min = 1, Max = 10.
+        /// The number of times the code can be played. Min = 1, Max = 3.
         /// </summary>
         [JsonProperty("max-replays", Order = 17, NullValueHandling = NullValueHandling.Ignore)]
         public int? MaxReplays { get; set; }
@@ -83,6 +84,5 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("voicemail-response", Order = 19)]
         public VoicemailResponse VoicemailResponse { get; set; } = VoicemailResponse.Ignore;
-
     }
 }

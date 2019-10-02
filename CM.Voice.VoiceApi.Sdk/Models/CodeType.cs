@@ -1,4 +1,6 @@
-﻿namespace CM.Voice.VoiceApi.Sdk.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CM.Voice.VoiceApi.Sdk.Models
 {
     /// <summary>
     /// The type of the code
@@ -12,6 +14,7 @@
         /// <summary>
         /// Use TTS to spell.
         /// </summary>
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         TTS,
         /// <summary>
         /// Use your own custom prompts.
