@@ -63,7 +63,7 @@ namespace CM.Voice.VoiceApi.Sdk
         }
 
         [Obsolete("See SendAsync")]
-        public Task<VoiceApiResult<CallQueuedEvent>> SendInstructionAsync(BaseAppInstruction instruction, CancellationToken cancellationToken = default)
+        public Task<VoiceApiResult<CallQueuedEvent>> SendInstruction(BaseAppInstruction instruction, CancellationToken cancellationToken = default)
             => SendAsync(instruction, cancellationToken);
 
         private static string GetUrlSuffix(BaseAppInstruction instruction)
