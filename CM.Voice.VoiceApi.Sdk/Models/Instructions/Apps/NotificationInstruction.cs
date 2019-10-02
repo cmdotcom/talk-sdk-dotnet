@@ -26,7 +26,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         public VoicemailResponse VoicemailResponse { get; set; } = VoicemailResponse.Ignore;
 
         /// <summary>
-        /// The number of times the code can be played. Min = 1, Max = 10.
+        /// The number of times the code can be played. Min = 1, Max = 3.
         /// </summary>
         [JsonProperty("max-replays", Order = 11, NullValueHandling = NullValueHandling.Ignore)]
         public int? MaxReplays { get; set; }

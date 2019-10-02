@@ -68,7 +68,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         public PromptType? OutroPromptType { get; set; } = PromptType.TTS;
 
         /// <summary>
-        /// The number of times the code can be played. Min = 1, Max = 10.
+        /// The number of times the code can be played. Min = 1, Max = 3.
         /// </summary>
         [JsonProperty("max-replays", Order = 17, NullValueHandling = NullValueHandling.Ignore)]
         public int? MaxReplays { get; set; }
