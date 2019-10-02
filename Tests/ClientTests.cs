@@ -222,7 +222,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            await client.SendInstructionAsync(instruction).ConfigureAwait(false);
+            await client.SendInstruction(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
             var (httpRequestMessage, content) = handler.RequestMessages.First();
@@ -261,7 +261,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            await client.SendInstructionAsync(instruction).ConfigureAwait(false);
+            await client.SendInstruction(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
             var (httpRequestMessage, content) = handler.RequestMessages.First();
@@ -307,7 +307,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            await client.SendInstructionAsync(instruction).ConfigureAwait(false);
+            await client.SendInstruction(instruction).ConfigureAwait(false);
 
             Assert.Single(handler.RequestMessages);
             var (httpRequestMessage, content) = handler.RequestMessages.First();
@@ -353,7 +353,7 @@ namespace Tests
             var httpClient = new HttpClient(handler);
             var client = new VoiceApiClient(httpClient, Guid.NewGuid());
 
-            var result = await client.SendInstructionAsync(instruction).ConfigureAwait(false);
+            var result = await client.SendInstruction(instruction).ConfigureAwait(false);
 
             Assert.Equal(HttpStatusCode.OK, result.HttpStatusCode);
             Assert.Equal(evtJson, result.Content);
