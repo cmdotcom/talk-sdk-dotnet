@@ -1,5 +1,5 @@
-[![Build](https://img.shields.io/appveyor/ci/m-jepson/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master)
-[![Test](https://img.shields.io/appveyor/tests/m-jepson/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/m-jepson/voiceapisdk/branch/master/tests)
+[![Build](https://img.shields.io/appveyor/ci/cmdotcom/voiceapisdk/master.svg "Build Status")](https://ci.appveyor.com/project/cmdotcom/voiceapisdk/branch/master)
+[![Test](https://img.shields.io/appveyor/tests/cmdotcom/voiceapisdk/master.svg "Test Status")](https://ci.appveyor.com/project/cmdotcom/voiceapisdk/branch/master/tests)
 [![NuGetV](https://img.shields.io/nuget/v/CM.Voice.VoiceApi.Sdk.svg "Nuget Version")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
 [![NuGetDownloads](https://img.shields.io/nuget/dt/CM.Voice.VoiceApi.Sdk.svg "Nuget downloads")](https://www.nuget.org/packages/CM.Voice.VoiceApi.Sdk)
 
