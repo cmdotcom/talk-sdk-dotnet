@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
 {
@@ -11,73 +11,73 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
-        [JsonProperty("prompt", Order = 7, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("prompt")]
         public string Prompt { get; set; }
 
         /// <summary>
         /// The type of the prompt, either file or tts.
         /// </summary>
-        [JsonProperty("prompt-type", Order = 8, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("prompt-type")]
         public PromptType? PromptType { get; set; } = Models.PromptType.TTS;
 
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
-        [JsonProperty("valid-prompt", Order = 9, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("valid-prompt")]
         public string ValidPrompt { get; set; }
 
         /// <summary>
         /// The type of the prompt, either file or tts.
         /// </summary>
-        [JsonProperty("valid-prompt-type", Order = 10, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("valid-prompt-type")]
         public PromptType? ValidPromptType { get; set; } = Models.PromptType.TTS;
 
         /// <summary>
         /// The prompt, which is either the path and name of the file to play, or the string that needs to be tts-ed.
         /// </summary>
-        [JsonProperty("invalid-prompt", Order = 11, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("invalid-prompt")]
         public string InvalidPrompt { get; set; }
 
         /// <summary>
         /// The type of the prompt, either file or tts.
         /// </summary>
-        [JsonProperty("invalid-prompt-type", Order = 12, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("invalid-prompt-type")]
         public PromptType? InvalidPromptType { get; set; } = Models.PromptType.TTS;
 
         /// <summary>
         /// The minimum number of digits for the dtmf input
         /// </summary>
-        [JsonProperty("min-digits", Order = 13, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("min-digits")]
         public int? MinDigits { get; set; }
 
         /// <summary>
         /// The maximum number of digits for the dtmf input
         /// </summary>
-        [JsonProperty("max-digits", Order = 14, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("max-digits")]
         public int? MaxDigits { get; set; }
 
         /// <summary>
         /// The maximum number of attempts to input valid dtmf.
         /// </summary>
-        [JsonProperty("max-attempts", Order = 15, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("max-attempts")]
         public int? MaxAttempts { get; set; }
 
         /// <summary>
         /// The max timeout for pressing a button.
         /// </summary>
-        [JsonProperty("timeout", Order = 16, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("timeout")]
         public int? TimeOut { get; set; }
 
         /// <summary>
         /// The keys that will end dtmf input.
         /// </summary>
-        [JsonProperty("terminators", Order = 17, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("terminators")]
         public string Terminators { get; set; }
 
         /// <summary>
         /// The match to use for validating the input.
         /// </summary>
-        [JsonProperty("regex", Order = 18, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("regex")]
         public string DigitsRegex { get; set; }
     }
 }

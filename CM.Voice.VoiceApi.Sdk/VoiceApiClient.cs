@@ -1,7 +1,7 @@
 ﻿using CM.Voice.VoiceApi.Sdk.Models;
 using CM.Voice.VoiceApi.Sdk.Models.Events.Apps;
 using CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -42,8 +42,7 @@ namespace CM.Voice.VoiceApi.Sdk
             using (var request = new HttpRequestMessage(HttpMethod.Post, _url + urlSuffix))
             {
                 request.Headers.Add(ApiKeyHeader, _apiKey.ToString());
-                request.Content = new StringContent(JsonConvert.SerializeObject(instruction), Encoding.UTF8, "application/json");
-
+                request.Content = new StringContent(JsonSerializer.Serialize(Convert.ChangeType(instruction, instruction.GetType())), Encoding.UTF8, "application/json");
                 using (var result = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false))
                 {
                     cancellationToken.ThrowIfCancellationRequested();

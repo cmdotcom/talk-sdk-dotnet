@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace CM.Voice.VoiceApi.Sdk.Models.Events
 {
@@ -8,19 +8,19 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Events
         /// <summary>
         /// The type of event.
         /// </summary>
-        [JsonProperty("type", Order = 1, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("type")]
         public string Type => EventType;
 
         /// <summary>
         /// The ID of the call this event belongs to.
         /// </summary>
-        [JsonProperty("call-id", Order = 2)]
+        [JsonPropertyName("call-id")]
         public Guid CallId { get; set; }
 
         /// <summary>
         /// The ID of the instruction the event is a result of.
         /// </summary>
-        [JsonProperty("instruction-id", Order = 3, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("instruction-id")]
         public string InstructionId { get; set; }
 
         /// <summary>

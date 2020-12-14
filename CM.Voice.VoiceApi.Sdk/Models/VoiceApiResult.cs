@@ -1,5 +1,5 @@
 ﻿using CM.Voice.VoiceApi.Sdk.Models.Events;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System.Net;
 
 namespace CM.Voice.VoiceApi.Sdk.Models
@@ -13,6 +13,6 @@ namespace CM.Voice.VoiceApi.Sdk.Models
         public string Content { get; set; }
 
         public TEvent DeserializeEvent()
-            => JsonConvert.DeserializeObject<TEvent>(Content);
+            => JsonSerializer.Deserialize<TEvent>(Content);
     }
 }
