@@ -10,17 +10,18 @@ namespace CM.Voice.VoiceApi.Sdk.Models
         /// <summary>
         /// Prompt is a filename.
         /// </summary>
-        File,
+        File = 0,
+        
         /// <summary>
         /// Prompt is a TTS string.
         /// </summary>
         [SuppressMessage("ReSharper", "InconsistentNaming")]
-        TTS,
-		
-		/// <summary>
-		/// Prompt is a TTS SSML string.
-		/// </summary>
-		[SuppressMessage("ReSharper", "InconsistentNaming")]
-		TTS_SSML
+        TTS = 1,
+        
+        /// <summary>
+        /// Prompt is a TTS SSML string.
+        /// </summary>
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
+        TTS_SSML = 2
     }
 }
