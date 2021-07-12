@@ -15,6 +15,12 @@ namespace CM.Voice.VoiceApi.Sdk.Models
         /// Prompt is a TTS string.
         /// </summary>
         [SuppressMessage("ReSharper", "InconsistentNaming")]
-        TTS
+        TTS,
+		
+		/// <summary>
+		/// Prompt is a TTS SSML string.
+		/// </summary>
+		[SuppressMessage("ReSharper", "InconsistentNaming")]
+		TTS_SSML
     }
 }
