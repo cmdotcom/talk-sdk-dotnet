@@ -2,7 +2,7 @@ using CM.Voice.VoiceApi.Sdk;
 using CM.Voice.VoiceApi.Sdk.Models;
 using CM.Voice.VoiceApi.Sdk.Models.Events.Apps;
 using CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +64,8 @@ namespace Tests
             var (httpRequestMessage, content) = handler.RequestMessages.First();
             Assert.Equal(Url + "/Notification", httpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
-            var json = JsonConvert.SerializeObject(instruction);
+            //var json = JsonConvert.SerializeObject(instruction);
+            var json = JsonSerializer.Serialize<NotificationInstruction>(instruction);
             Assert.Equal(json, content);
         }
 
@@ -103,7 +104,8 @@ namespace Tests
             var (httpRequestMessage, content) = handler.RequestMessages.First();
             Assert.Equal(Url + "/OTP", httpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
-            var json = JsonConvert.SerializeObject(instruction);
+            //var json = JsonConvert.SerializeObject(instruction);
+            var json = JsonSerializer.Serialize<OtpInstruction>(instruction);
             Assert.Equal(json, content);
         }
 
@@ -149,7 +151,8 @@ namespace Tests
             var (httpRequestMessage, content) = handler.RequestMessages.First();
             Assert.Equal(Url + "/DTMF", httpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
-            var json = JsonConvert.SerializeObject(instruction);
+            //var json = JsonConvert.SerializeObject(instruction);
+            var json = JsonSerializer.Serialize<RequestDtmfInstruction>(instruction);
             Assert.Equal(json, content);
         }
 
@@ -179,7 +182,8 @@ namespace Tests
             };
 
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            var evtJson = JsonConvert.SerializeObject(evt);
+            //var evtJson = JsonConvert.SerializeObject(evt);
+            var evtJson = JsonSerializer.Serialize(evt);
             responseMessage.Content = new StringContent(evtJson);
             var handler = new MockHttpMessageHandler
             {
@@ -228,7 +232,8 @@ namespace Tests
             var (httpRequestMessage, content) = handler.RequestMessages.First();
             Assert.Equal(Url + "/Notification", httpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
-            var json = JsonConvert.SerializeObject(instruction);
+            //var json = JsonConvert.SerializeObject(instruction);
+            var json = JsonSerializer.Serialize<NotificationInstruction>(instruction);
             Assert.Equal(json, content);
         }
 
@@ -267,7 +272,8 @@ namespace Tests
             var (httpRequestMessage, content) = handler.RequestMessages.First();
             Assert.Equal(Url + "/OTP", httpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
-            var json = JsonConvert.SerializeObject(instruction);
+            //var json = JsonConvert.SerializeObject(instruction);
+            var json = JsonSerializer.Serialize<OtpInstruction>(instruction);
             Assert.Equal(json, content);
         }
 
@@ -313,7 +319,8 @@ namespace Tests
             var (httpRequestMessage, content) = handler.RequestMessages.First();
             Assert.Equal(Url + "/DTMF", httpRequestMessage.RequestUri.AbsoluteUri);
             Assert.Equal(HttpMethod.Post, httpRequestMessage.Method);
-            var json = JsonConvert.SerializeObject(instruction);
+            //var json = JsonConvert.SerializeObject(instruction);
+            var json = JsonSerializer.Serialize<RequestDtmfInstruction>(instruction);
             Assert.Equal(json, content);
         }
 
@@ -344,7 +351,8 @@ namespace Tests
             };
 
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            var evtJson = JsonConvert.SerializeObject(evt);
+            //var evtJson = JsonConvert.SerializeObject(evt);
+            var evtJson = JsonSerializer.Serialize(evt);
             responseMessage.Content = new StringContent(evtJson);
             var handler = new MockHttpMessageHandler
             {
