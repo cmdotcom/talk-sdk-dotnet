@@ -45,7 +45,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         public bool DisableCalleesValidation { get; set; }
         
         /// <summary>
-        /// Iff true, the tts or sst voice has a higher quality.
+        /// Iff true, the tts or stt voice has a higher quality and supports more languages.
         /// Please note that premium voices are more expensive.
         /// </summary>
         [JsonProperty("premium", Order = 8)]
