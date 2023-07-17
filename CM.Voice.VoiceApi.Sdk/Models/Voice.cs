@@ -31,5 +31,12 @@ namespace CM.Voice.VoiceApi.Sdk.Models
         /// <remarks>Allowed values are -4, -3, -2, -1, 0, 1, 2, 3 or 4.</remarks>
         [JsonProperty("volume", Order = 4)]
         public sbyte Volume { get; set; }
+        
+        /// <summary>
+        /// Iff true, the tts or stt voice has a higher quality and supports more languages.
+        /// Please note that premium voices are more expensive.
+        /// </summary>
+        [JsonProperty("premium", Order = 4)]
+        public bool? Premium { get; set; } = false;
     }
 }
