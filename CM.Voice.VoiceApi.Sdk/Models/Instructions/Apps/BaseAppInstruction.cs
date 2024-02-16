@@ -60,7 +60,7 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// Determines how many seconds the VoiceAPI will wait for the callee to answer the call.
         /// Cancels the call if the timeout period has exceeded.
         /// </summary>
-        [JsonProperty("timeout", Order = 101, NullValueHandling = NullValueHandling.Ignore)]
-        public int? Timeout { get; set; }
+        [JsonProperty("max-ringing-timeout", Order = 101, NullValueHandling = NullValueHandling.Ignore)]
+        public int? MaxRingingTimeout { get; set; }
     }
 }
