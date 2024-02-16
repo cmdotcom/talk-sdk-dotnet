@@ -55,5 +55,12 @@ namespace CM.Voice.VoiceApi.Sdk.Models.Instructions.Apps
         /// </summary>
         [JsonProperty("callback-url", Order = 100, NullValueHandling = NullValueHandling.Ignore)]
         public string CallbackUrl { get; set; }
+        
+        /// <summary>
+        /// Determines how many seconds the VoiceAPI will wait for the callee to answer the call.
+        /// Cancels the call if the timeout period has exceeded.
+        /// </summary>
+        [JsonProperty("timeout", Order = 101, NullValueHandling = NullValueHandling.Ignore)]
+        public int? Timeout { get; set; }
     }
 }
