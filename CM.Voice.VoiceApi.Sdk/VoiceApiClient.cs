@@ -76,6 +76,8 @@ namespace CM.Voice.VoiceApi.Sdk
                     return "/OTP";
                 case RequestDtmfInstruction _:
                     return "/DTMF";
+                case FlowBuilderInstruction _:
+                    return "/FlowBuilder";
                 default:
                     throw new NotImplementedException($"No known endpoint for sending a {instruction.GetType().Name} to the CM VoiceApi.");
             }
