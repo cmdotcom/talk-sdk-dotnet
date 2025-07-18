@@ -1,29 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>mjepson</Authors>
-    <Version>1.0.0</Version>
-    <Description>SDK for use with the CM Voice API.</Description>
-    <PackageProjectUrl>https://github.com/CMTelecom/VoiceApiSdk</PackageProjectUrl>
-    <Company>CM Telecom</Company>
-    <PackageIconUrl>http://cdn.cmtelecom.com/images/cm-nuget.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/CMTelecom/VoiceApiSdk</RepositoryUrl>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <Authors>CM Talk</Authors>
+    <Company>CM.com</Company>
+    <Product>CM Talk SDK</Product>
+    <Description>A software development kit to provide ways to interact with CM.com's Talk/Voice API.</Description>
+    <PackageTags>voice, talk</PackageTags>
+    <RepositoryUrl>https://github.com/cmdotcom/talk-sdk-dotnet</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageTags>SDK, CM, VoiceAPI</PackageTags>
-    <Copyright>2018 CM Telecom</Copyright>
-    <PackageLicenseUrl>https://mit-license.org</PackageLicenseUrl>
-    <PackageReleaseNotes>First version with support for sending instructions using a simple client.</PackageReleaseNotes>
+    <Copyright>$([System.DateTime]::UtcNow.Year) CM.com</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIconUrl>https://cdn.cmtelecom.com/images/cm-nuget.png</PackageIconUrl>
+    <Version>1.8.0</Version>
+    <PackageProjectUrl>https://github.com/cmdotcom/talk-sdk-dotnet</PackageProjectUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyVersion>1.8.0</AssemblyVersion>
+    <FileVersion>1.8.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\Users\Michael.Jepson\.nuget\packages\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
