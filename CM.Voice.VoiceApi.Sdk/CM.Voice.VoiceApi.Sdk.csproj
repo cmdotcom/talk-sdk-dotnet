@@ -11,17 +11,20 @@
     <RepositoryType>Github</RepositoryType>
     <Copyright>$([System.DateTime]::UtcNow.Year) CM.com</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIconUrl>https://cdn.cmtelecom.com/images/cm-nuget.png</PackageIconUrl>
-    <Version>1.8.0</Version>
+    <PackageIcon>icon.png</PackageIcon>
+    <Version>1.7.2</Version>
     <PackageProjectUrl>https://github.com/cmdotcom/talk-sdk-dotnet</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyVersion>1.8.0</AssemblyVersion>
-    <FileVersion>1.8.0</FileVersion>
+    <AssemblyVersion>1.7.2</AssemblyVersion>
+    <FileVersion>1.7.2</FileVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <None Include="$(MSBuildProjectDirectory)/../icon.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="$(MSBuildProjectDirectory)/../LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
